@@ -1,0 +1,39 @@
+# Node modules
+node_modules
+
+# Build output
+dist
+
+# Logs
+*.log
+
+# Env files
+.env*
+.env.sample
+
+# Coverage
+coverage
+
+# Static assets
+public
+static
+
+# Lock files
+package-lock.json
+
+# Git configuration
+.gitignore
+.gitattributes
+
+# Prettier/ESLint configs
+.prettierrc
+.eslintrc
+
+# Docker
+.dockerignore
+
+# config
+.config*
+
+#doc
+*.md

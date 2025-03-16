@@ -1,0 +1,21 @@
+# Development docker-compose.yaml file
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    container_name: questify-frontend
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/projects/questify/frontend
+    restart: unless-stopped
+    environment:
+      - DOCKER_ENVIRONMENT=true
+    # The goal is for the host to connect to the Vite dev server running inside the container.
+    # Port mapping allows the host and container to communicate with each other, but the site is still inaccessible on localhost:5173 on the host machine.
+    # Because by default Vite binds to localhost (127.0.0.1) , which means Vite dev server only allows requests originating from localhost i.e within the container and not the host.
+    # --host flag makes Vite dev server bind to 0.0.0.0, exposing it to the network and allowing requests from external sources including the host machine.
+    # * Unlike Vite , Express or Nginx do not face such issues as these servers binds to 0.0.0.0 by default.
+    # First '--' implies that the following arguments are script arguments, if it is not provided the next values are considered npm arguments instead of script's.
+    command: ["npm", "run", "dev", "--", "--host"]
