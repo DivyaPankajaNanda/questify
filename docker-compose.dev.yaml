@@ -12,6 +12,9 @@ services:
     restart: unless-stopped
     environment:
       - DOCKER_ENVIRONMENT=true
+      - VITE_API_URL=http://backend:8000
+    depends_on:
+      - backend
     # The goal is for the host to connect to the Vite dev server running inside the container.
     # Port mapping allows the host and container to communicate with each other, but the site is still inaccessible on localhost:5173 on the host machine.
     # Because by default Vite binds to localhost (127.0.0.1) , which means Vite dev server only allows requests originating from localhost i.e within the container and not the host.
@@ -19,3 +22,43 @@ services:
     # * Unlike Vite , Express or Nginx do not face such issues as these servers binds to 0.0.0.0 by default.
     # First '--' implies that the following arguments are script arguments, if it is not provided the next values are considered npm arguments instead of script's.
     command: ["npm", "run", "dev", "--", "--host"]
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    container_name: questify-backend
+    ports:
+      - "8000:8000"
+    env_file:
+      - ./backend/.env
+    volumes:
+      - ./backend/src:/projects/questify/backend/src
+    restart: unless-stopped
+    environment:
+      - DOCKER_ENVIRONMENT=true
+    depends_on:
+      - mongodb
+      - redis
+
+  mongodb:
+    image: mongo
+    container_name: questify-mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    restart: unless-stopped
+
+  redis:
+    image: redis/redis-stack-server
+    container_name: questify-redis
+    ports:
+      - "6379:6379"
+    restart: unless-stopped
+    volumes:
+      - redis-data:/data
+
+volumes:
+  mongodb_data:
+  redis-data:

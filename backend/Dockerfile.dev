@@ -1,0 +1,15 @@
+# Dev Stage 
+FROM node:22-alpine AS dev
+
+WORKDIR /projects/questify/backend
+
+COPY package*.json ./
+
+RUN npm ci
+
+COPY . .
+
+EXPOSE 8000
+
+CMD [ "npm","run","dev" ]
+

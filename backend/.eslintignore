@@ -1,0 +1,32 @@
+# Node modules
+node_modules/
+
+# Build directories
+dist/
+
+
+# Prettier and ESLint configurations
+.prettierrc
+eslint.config.mjs
+.eslintignore
+.prettierignore
+
+# Environment variables
+.env
+.env.* 
+
+# Logs
+logs/
+*.log
+
+# Test coverage directory
+coverage/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# config
+.config*
+
+#doc
+*.md
