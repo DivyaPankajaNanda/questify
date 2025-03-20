@@ -1,17 +1,25 @@
-import express, { Request, Response } from 'express';
-import dotenv from 'dotenv';
+import connectDB from './config/database.js';
+import app from './config/app.js';
 import { config } from './config/config.js';
+import Logger from './common/utils/Logger.js';
+import { RedisUtil } from './common/utils/RedisUtil.js';
 
-dotenv.config();
+const logger = Logger.getInstance();
 
-const app = express();
+(async () => {
+	try {
+		await connectDB();
+		await RedisUtil.initializeRedis();
 
-app.use(express.json());
+		app.on('error', (error) => {
+			logger.error(`Application error : ${error}`);
+		});
 
-app.get('/', (request: Request, response: Response) => {
-	response.json({ message: 'Hello, Questify backend!' });
-});
-
-app.listen(config.PORT, () => {
-	console.log(`Server running on http://localhost:${config.PORT}`);
-});
+		app.listen(config.PORT, () => {
+			logger.info(`Server started on http://${config.DOMAIN}:${config.PORT}`);
+		});
+	} catch (error) {
+		logger.error(`Couldn't start the server due to error : ${error}`);
+		process.exit(1);
+	}
+})();

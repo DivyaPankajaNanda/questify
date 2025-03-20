@@ -18,6 +18,7 @@ export const config = {
 	ACCESS_TOKEN_EXPIRY: process.env.ACCESS_TOKEN_EXPIRY || '1h',
 	REFRESH_TOKEN_SECRET_KEY: process.env.REFRESH_TOKEN_SECRET_KEY || 'Another strong secret',
 	REFRESH_TOKEN_EXPIRY: process.env.REFRESH_TOKEN_EXPIRY || '7d',
+	FILE_UPLOAD_SIZE_LIMIT: 5 * 1024 * 1024, // 5 MB
 	SERVICES: {
 		AUTH_API: {
 			BASE_URL: process.env.AUTH_API_BASE_URL,
