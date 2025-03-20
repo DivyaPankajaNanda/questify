@@ -8,8 +8,9 @@ export class AnalyticsController {
 
 	getQuestionnaireAnalytics = async (request: Request, response: Response) => {
 		const questionnaireId = request.params.questionnaireId;
+		const userId = request.user?.userId;
 
-		const analytics = await this.analyticsService.getQuestionnaireAnalytics(questionnaireId);
+		const analytics = await this.analyticsService.getQuestionnaireAnalytics(userId as string, questionnaireId);
 
 		response.status(HTTP_STATUS.OK.statusCode).send(new ApiResponse(HTTP_STATUS.OK.statusCode, HTTP_STATUS.OK.message, { analytics: analytics }));
 	};

@@ -1,23 +1,24 @@
 import { CustomException } from '../../../../common/exceptions/CustomException.js';
 import { IAnalytics } from '../../../../common/interfaces/IAnalytics.js';
 import { ERROR_CODES } from '../../../../common/utils/Constants.js';
-import { IQuestionnaireRepository } from '../../../questionnaire/v1/repositories/IQuestionnaireRepository.js';
-import { ISubmissionRepository } from '../../../submission/v1/repositories/ISubmissionRepository.js';
+import { IQuestionnaireService } from '../../../questionnaire/v1/services/IQuestionnaireService.js';
+import { ISubmissionService } from '../../../submission/v1/services/ISubmissionService.js';
 import { IAnalyticsService } from './IAnalyticsService.js';
 
 export class AnalyticsService implements IAnalyticsService {
 	constructor(
-		private submissionRepository: ISubmissionRepository,
-		private questionnaireRepository: IQuestionnaireRepository,
+		private submissionService: ISubmissionService,
+		private questionnaireService: IQuestionnaireService,
 	) {}
 
-	async getQuestionnaireAnalytics(questionnaireId: string): Promise<Partial<IAnalytics>> {
-		const questionnaire = await this.questionnaireRepository.findById(questionnaireId);
-		if (!questionnaire) {
-			throw new CustomException({ errorCodeObject: ERROR_CODES.QUESTIONNAIRE_NOT_FOUND });
-		}
+	async getQuestionnaireAnalytics(userId: string, questionnaireId: string): Promise<Partial<IAnalytics>> {
+		const questionnaire = await this.questionnaireService.findById(questionnaireId);
 
-		const submissions = await this.submissionRepository.findByQuestionnaireId(questionnaireId);
+		if (questionnaire && questionnaire.createdBy != userId) throw new CustomException({ errorCodeObject: ERROR_CODES.USER_FORBIDDEN });
+
+		if (!questionnaire) throw new CustomException({ errorCodeObject: ERROR_CODES.QUESTIONNAIRE_NOT_FOUND });
+
+		const submissions = await this.submissionService.findByQuestionnaireId(questionnaireId);
 		return {
 			questionnaireId,
 			totalSubmissions: submissions.length,
