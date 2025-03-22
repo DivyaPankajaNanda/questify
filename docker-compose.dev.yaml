@@ -12,7 +12,7 @@ services:
     restart: unless-stopped
     environment:
       - DOCKER_ENVIRONMENT=true
-      - VITE_API_URL=http://backend:8000
+      - VITE_API_URL=http://localhost:8000/api/v1 # Here localhost has to be used instead of backend to avoid url not resolved issue during api call as browser has no idea of backend named docker service
     depends_on:
       - backend
     # The goal is for the host to connect to the Vite dev server running inside the container.
@@ -22,6 +22,8 @@ services:
     # * Unlike Vite , Express or Nginx do not face such issues as these servers binds to 0.0.0.0 by default.
     # First '--' implies that the following arguments are script arguments, if it is not provided the next values are considered npm arguments instead of script's.
     command: ["npm", "run", "dev", "--", "--host"]
+    networks:
+      - questify-network
 
   backend:
     build:
@@ -40,6 +42,8 @@ services:
     depends_on:
       - mongodb
       - redis
+    networks:
+      - questify-network
 
   mongodb:
     image: mongo
@@ -49,6 +53,8 @@ services:
     volumes:
       - mongodb_data:/data/db
     restart: unless-stopped
+    networks:
+      - questify-network
 
   redis:
     image: redis/redis-stack-server
@@ -58,7 +64,13 @@ services:
     restart: unless-stopped
     volumes:
       - redis-data:/data
+    networks:
+      - questify-network
 
 volumes:
   mongodb_data:
   redis-data:
+
+networks:
+  questify-network:
+    driver: bridge

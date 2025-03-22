@@ -1,6 +1,8 @@
 {
 	"name": "frontend",
 	"private": true,
+	"author": "Divya Pankaja Nanda",
+	"license": "MIT",
 	"version": "0.0.0",
 	"type": "module",
 	"scripts": {
@@ -14,18 +16,29 @@
 		"format:check": "npx prettier --check 'src/**/*.ts' 'src/**/*.tsx'",
 		"lint:fix": "npx eslint 'src/**/*.ts' 'src/**/*.tsx' --fix",
 		"lint:check": "npx eslint 'src/**/*.ts' 'src/**/*.tsx'",
-		"prepare": "if [ \"$VITE_PRODUCTION_ENVIRONMENT\" = \"false\" ]; then husky; fi"
+		"sign": "node scripts/addHeader.js $(find src -type f \\( -name \"*.ts\" -o -name \"*.tsx\" \\))",
+		"prepare": "[ \"$VITE_PRODUCTION_ENVIRONMENT\" = \"true\" ]; || husky install"
+	},
+	"lint-staged": {
+		"src/**/*.{ts.tsx}": [
+			"node scripts/addHeader.js",
+			"npm run lint:check",
+			"npm run format:check"
+		]
 	},
 	"dependencies": {
 		"axios": "^1.8.4",
+		"jsonwebtoken": "^9.0.2",
 		"react": "^19.0.0",
 		"react-dom": "^19.0.0",
 		"react-router": "^7.3.0",
+		"zod": "^3.24.2",
 		"zustand": "^5.0.3"
 	},
 	"devDependencies": {
 		"@eslint/js": "^9.21.0",
 		"@tailwindcss/vite": "^4.0.14",
+		"@types/jsonwebtoken": "^9.0.9",
 		"@types/react": "^19.0.10",
 		"@types/react-dom": "^19.0.4",
 		"@vitejs/plugin-react": "^4.3.4",

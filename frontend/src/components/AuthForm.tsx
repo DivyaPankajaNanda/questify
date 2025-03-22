@@ -1,5 +1,6 @@
 import { FormEvent, useState } from 'react';
 import { useNavigate } from 'react-router';
+import { signin, signup } from '../api/authApi';
 
 const AuthForm = () => {
 	const [email, setEmail] = useState('');
@@ -8,16 +9,20 @@ const AuthForm = () => {
 	const [isSigninEnabled, setIsSigninEnabled] = useState(true);
 	const navigate = useNavigate();
 
-	const handleAuthSubmission = (e: FormEvent<HTMLFormElement>) => {
+	const handleAuthSubmission = async (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
-		const signinValidation = email != '' && password != '';
-		const signupValidation = name != '' && email != '' && password != '';
+		try {
+			if (isSigninEnabled) await signin(email, password);
+			else await signup(name, email, password);
 
-		if ((isSigninEnabled && !signinValidation) || (!isSigninEnabled && !signupValidation)) return;
+			resetInputs();
 
-		localStorage.setItem('auth', 'user');
-		navigate(`/dashboard`);
+			localStorage.setItem('auth', 'user');
+			navigate(`/dashboard`);
+		} catch (error) {
+			console.log(error);
+		}
 	};
 
 	const selectSignin = () => {
