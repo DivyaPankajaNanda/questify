@@ -20,7 +20,7 @@
 	},
 	"lint-staged": {
 		"src/**/*.ts": [
-			"node scripts/addHeader.ts",
+			"node scripts/addHeader.ts \"src/**/*.{ts,tsx}\"",
 			"npm run lint:check",
 			"npm run format:check"
 		]
