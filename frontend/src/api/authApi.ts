@@ -1,3 +1,8 @@
+/*
+	Author : Divya Pankaja Nanda 
+	Github : https://github.com/DivyaPankajaNanda
+*/
+
 import { SigninRequestSchema, SignupRequestSchema } from '../validation/zod/schema';
 import { postRequest } from '../util/axios';
 

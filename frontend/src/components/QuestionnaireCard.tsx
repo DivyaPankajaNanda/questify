@@ -1,3 +1,8 @@
+/*
+	Author : Divya Pankaja Nanda 
+	Github : https://github.com/DivyaPankajaNanda
+*/
+
 import { useNavigate } from 'react-router';
 
 const QuestionnaireCard = ({ questionnaire }: { questionnaire: { questionnaireId: string; title: string; description: string } }) => {

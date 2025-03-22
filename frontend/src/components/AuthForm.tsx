@@ -1,3 +1,8 @@
+/*
+	Author : Divya Pankaja Nanda 
+	Github : https://github.com/DivyaPankajaNanda
+*/
+
 import { FormEvent, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { signin, signup } from '../api/authApi';

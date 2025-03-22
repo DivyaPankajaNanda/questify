@@ -1,3 +1,8 @@
+/*
+	Author : Divya Pankaja Nanda 
+	Github : https://github.com/DivyaPankajaNanda
+*/
+
 import './index.css';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
