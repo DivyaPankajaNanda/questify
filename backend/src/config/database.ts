@@ -1,3 +1,8 @@
+/*
+	Author : Divya Pankaja Nanda 
+	Github : https://github.com/DivyaPankajaNanda
+*/
+
 import mongoose from 'mongoose';
 import { ERROR_CODES } from '../common/utils/Constants.js';
 import { CustomException } from '../common/exceptions/CustomException.js';

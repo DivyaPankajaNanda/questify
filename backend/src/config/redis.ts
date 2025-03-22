@@ -1,3 +1,8 @@
+/*
+	Author : Divya Pankaja Nanda 
+	Github : https://github.com/DivyaPankajaNanda
+*/
+
 import redis, { RedisClientType } from 'redis';
 import { config } from './config.js';
 import Logger from '../common/utils/Logger.js';

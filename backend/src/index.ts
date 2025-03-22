@@ -1,5 +1,3 @@
-// Test for husky
-
 import connectDB from './config/database.js';
 import app from './config/app.js';
 import { config } from './config/config.js';

@@ -1,3 +1,8 @@
+/*
+	Author : Divya Pankaja Nanda 
+	Github : https://github.com/DivyaPankajaNanda
+*/
+
 import dotenv from 'dotenv';
 
 if (!process.env.DOCKER_ENVIRONMENT || process.env.DOCKER_ENVIRONMENT !== 'true')
