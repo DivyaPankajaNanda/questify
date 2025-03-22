@@ -11,5 +11,6 @@ export default tsLint.config({
 			sourceType: 'module',
 		},
 	},
+	ignores: ['scripts/addHeader.js'],
 	extends: [eslint.configs.recommended, ...tsLint.configs.recommended, prettierConfig],
 });
