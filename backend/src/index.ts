@@ -1,8 +1,3 @@
-/*
-	Author : Divya Pankaja Nanda 
-	Github : https://github.com/DivyaPankajaNanda
-*/
-
 import connectDB from './config/database.js';
 import app from './config/app.js';
 import { config } from './config/config.js';

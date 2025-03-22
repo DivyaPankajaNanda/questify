@@ -21,7 +21,7 @@
 	"lint-staged": {
 		"src/**/*.ts": [
 			"echo 'Lint-staged is running!'",
-			"node scripts/addHeader.ts \"src/**/*.{ts,tsx}\"",
+			"node scripts/addHeader.js",
 			"npm run lint:check",
 			"npm run format:check"
 		]
