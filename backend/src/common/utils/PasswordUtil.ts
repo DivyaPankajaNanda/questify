@@ -1,3 +1,8 @@
+/*
+	Author : Divya Pankaja Nanda 
+	Github : https://github.com/DivyaPankajaNanda
+*/
+
 import bcrypt from 'bcryptjs';
 
 export class PasswordUtil {

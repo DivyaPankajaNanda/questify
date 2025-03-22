@@ -1,3 +1,8 @@
+/*
+	Author : Divya Pankaja Nanda 
+	Github : https://github.com/DivyaPankajaNanda
+*/
+
 import { Request, Response } from 'express';
 import { IAnalyticsService } from '../services/IAnalyticsService.js';
 import { HTTP_STATUS } from '../../../../common/utils/Constants.js';

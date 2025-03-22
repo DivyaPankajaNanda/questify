@@ -1,3 +1,8 @@
+/*
+	Author : Divya Pankaja Nanda 
+	Github : https://github.com/DivyaPankajaNanda
+*/
+
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export class ApiResponse {
 	statusCode: number;

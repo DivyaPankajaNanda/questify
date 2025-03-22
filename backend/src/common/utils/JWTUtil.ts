@@ -1,3 +1,8 @@
+/*
+	Author : Divya Pankaja Nanda 
+	Github : https://github.com/DivyaPankajaNanda
+*/
+
 import jwt, { JwtPayload } from 'jsonwebtoken';
 import ms from 'ms';
 import { config } from '../../config/config.js';

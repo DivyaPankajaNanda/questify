@@ -1,3 +1,8 @@
+/*
+	Author : Divya Pankaja Nanda 
+	Github : https://github.com/DivyaPankajaNanda
+*/
+
 import { ErrorCodeType, HttpStatusType } from '../types/index.js';
 
 export const HTTP_STATUS: Record<string, HttpStatusType> = {

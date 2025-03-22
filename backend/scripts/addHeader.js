@@ -1,5 +1,7 @@
 import fs from 'fs';
 
+console.log(`Executing addHeader.js`);
+
 const header = `/*\n\tAuthor : Divya Pankaja Nanda \n\tGithub : https://github.com/DivyaPankajaNanda\n*/\n\n`;
 
 const files = process.argv.slice(2).filter((file) => file.endsWith('.ts') || file.endsWith('.tsx'));

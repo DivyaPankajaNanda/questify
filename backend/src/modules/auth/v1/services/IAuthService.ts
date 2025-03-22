@@ -1,3 +1,8 @@
+/*
+	Author : Divya Pankaja Nanda 
+	Github : https://github.com/DivyaPankajaNanda
+*/
+
 import { IUser } from '../../../../common/interfaces/IUser.js';
 
 export interface IAuthService {

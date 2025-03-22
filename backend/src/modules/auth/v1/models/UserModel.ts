@@ -1,3 +1,8 @@
+/*
+	Author : Divya Pankaja Nanda 
+	Github : https://github.com/DivyaPankajaNanda
+*/
+
 import mongoose, { Document, Schema } from 'mongoose';
 import { IUser } from '../../../../common/interfaces/IUser.js';
 import { PasswordUtil } from '../../../../common/utils/PasswordUtil.js';

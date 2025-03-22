@@ -1,3 +1,8 @@
+/*
+	Author : Divya Pankaja Nanda 
+	Github : https://github.com/DivyaPankajaNanda
+*/
+
 import { createLogger, format, Logger as WinstonLogger, transport, transports } from 'winston';
 import { config } from '../../config/config.js';
 import fs from 'fs';

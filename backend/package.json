@@ -16,6 +16,7 @@
 		"format:check": "npx prettier --check 'src/**/*.ts'",
 		"lint:fix": "npx eslint 'src/**/*.ts' --fix",
 		"lint:check": "npx eslint 'src/**/*.ts'",
+		"sign": "node scripts/addHeader.js $(find src -type f \\( -name \"*.ts\" -o -name \"*.tsx\" \\))",
 		"prepare": "[ \"$PRODUCTION_ENVIRONMENT\" = \"true\" ] || husky"
 	},
 	"lint-staged": {

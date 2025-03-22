@@ -1,3 +1,8 @@
+/*
+	Author : Divya Pankaja Nanda 
+	Github : https://github.com/DivyaPankajaNanda
+*/
+
 import { CustomException } from '../../../../common/exceptions/CustomException.js';
 import { IAnalytics } from '../../../../common/interfaces/IAnalytics.js';
 import { ERROR_CODES } from '../../../../common/utils/Constants.js';

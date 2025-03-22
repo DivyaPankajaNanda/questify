@@ -1,3 +1,8 @@
+/*
+	Author : Divya Pankaja Nanda 
+	Github : https://github.com/DivyaPankajaNanda
+*/
+
 import express from 'express';
 import submissionRouter from './v1/routes/SubmissionRoutes.js';
 

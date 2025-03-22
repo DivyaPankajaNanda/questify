@@ -1,3 +1,8 @@
+/*
+	Author : Divya Pankaja Nanda 
+	Github : https://github.com/DivyaPankajaNanda
+*/
+
 import mongoose, { Document, Schema } from 'mongoose';
 import { ISubmission } from '../../../../common/interfaces/ISubmission.js';
 

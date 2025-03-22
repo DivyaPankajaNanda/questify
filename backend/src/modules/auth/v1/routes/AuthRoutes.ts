@@ -1,3 +1,8 @@
+/*
+	Author : Divya Pankaja Nanda 
+	Github : https://github.com/DivyaPankajaNanda
+*/
+
 import { Router } from 'express';
 import { AuthController } from '../controllers/AuthController.js';
 import { AuthService } from '../services/AuthService.js';

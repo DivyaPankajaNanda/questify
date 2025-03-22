@@ -1,3 +1,8 @@
+/*
+	Author : Divya Pankaja Nanda 
+	Github : https://github.com/DivyaPankajaNanda
+*/
+
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { config } from '../../config/config.js';
 import { ErrorCodeType } from '../types/index.js';

@@ -1,3 +1,8 @@
+/*
+	Author : Divya Pankaja Nanda 
+	Github : https://github.com/DivyaPankajaNanda
+*/
+
 import { RedisClientType } from 'redis';
 import { connectRedis } from '../../config/redis.js';
 import { config } from '../../config/config.js';
