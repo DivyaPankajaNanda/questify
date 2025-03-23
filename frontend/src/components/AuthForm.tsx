@@ -49,10 +49,16 @@ const AuthForm = () => {
 	return (
 		<div className="bg-white h-70 w-70 rounded-xl overflow-hidden">
 			<div className="flex flex-row h-1/5">
-				<div onClick={selectSignin} className={`flex items-center justify-center flex-1/2 ${isSigninEnabled ? 'bg-green-800' : 'bg-blue-800'}`}>
+				<div
+					onClick={selectSignin}
+					className={`flex items-center justify-center flex-1/2 ${isSigninEnabled ? 'bg-color4 color1' : 'bg-color1 color4'}`}
+				>
 					Signin
 				</div>
-				<div onClick={selectSignup} className={`flex items-center justify-center flex-1/2 ${isSigninEnabled ? 'bg-blue-800' : 'bg-green-800'}`}>
+				<div
+					onClick={selectSignup}
+					className={`flex items-center justify-center flex-1/2 ${isSigninEnabled ? 'bg-color1 color4' : 'bg-color4 color1'}`}
+				>
 					Signup
 				</div>
 			</div>

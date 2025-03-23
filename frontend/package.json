@@ -16,8 +16,7 @@
 		"format:check": "npx prettier --check 'src/**/*.ts' 'src/**/*.tsx'",
 		"lint:fix": "npx eslint 'src/**/*.ts' 'src/**/*.tsx' --fix",
 		"lint:check": "npx eslint 'src/**/*.ts' 'src/**/*.tsx'",
-		"sign": "node scripts/addHeader.js $(find src -type f \\( -name \"*.ts\" -o -name \"*.tsx\" \\))",
-		"prepare": "[ \"$VITE_PRODUCTION_ENVIRONMENT\" = \"true\" ]; || husky install"
+		"sign": "node scripts/addHeader.js $(find src -type f \\( -name \"*.ts\" -o -name \"*.tsx\" \\))"
 	},
 	"lint-staged": {
 		"src/**/*.{ts.tsx}": [
@@ -27,8 +26,28 @@
 		]
 	},
 	"dependencies": {
+		"@progress/kendo-licensing": "^1.5.1",
+		"@progress/kendo-react-animation": "^10.0.0",
+		"@progress/kendo-react-buttons": "^10.0.0",
+		"@progress/kendo-react-common": "^10.0.0",
+		"@progress/kendo-react-dateinputs": "^10.0.0",
+		"@progress/kendo-react-dialogs": "^10.0.0",
+		"@progress/kendo-react-dropdowns": "^10.0.0",
+		"@progress/kendo-react-indicators": "^10.0.0",
+		"@progress/kendo-react-inputs": "^10.0.0",
+		"@progress/kendo-react-intl": "^10.0.0",
+		"@progress/kendo-react-labels": "^10.0.0",
+		"@progress/kendo-react-layout": "^10.0.0",
+		"@progress/kendo-react-listbox": "^10.0.0",
+		"@progress/kendo-react-notification": "^10.0.0",
+		"@progress/kendo-react-popup": "^10.0.0",
+		"@progress/kendo-react-progressbars": "^10.0.0",
+		"@progress/kendo-react-tooltip": "^10.0.0",
+		"@progress/kendo-svg-icons": "^4.0.0",
+		"@progress/kendo-theme-default": "^10.4.0",
 		"axios": "^1.8.4",
 		"jsonwebtoken": "^9.0.2",
+		"motion": "^12.5.0",
 		"react": "^19.0.0",
 		"react-dom": "^19.0.0",
 		"react-router": "^7.3.0",
