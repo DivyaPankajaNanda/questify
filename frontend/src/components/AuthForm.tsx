@@ -6,6 +6,7 @@
 import { FormEvent, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { signin, signup } from '../api/authApi';
+import { Button, Input } from '../components/kendo';
 
 const AuthForm = () => {
 	const [email, setEmail] = useState('');
@@ -47,8 +48,8 @@ const AuthForm = () => {
 	};
 
 	return (
-		<div className="bg-white h-70 w-70 rounded-xl overflow-hidden">
-			<div className="flex flex-row h-1/5">
+		<div className="bg-white min-h-70 w-70 rounded-xl overflow-hidden">
+			<div className="flex flex-row h-15 font-bold cursor-pointer">
 				<div
 					onClick={selectSignin}
 					className={`flex items-center justify-center flex-1/2 ${isSigninEnabled ? 'bg-color4 color1' : 'bg-color1 color4'}`}
@@ -62,11 +63,35 @@ const AuthForm = () => {
 					Signup
 				</div>
 			</div>
-			<form onSubmit={(e) => handleAuthSubmission(e)} className="flex flex-col gap-4 h-4/5 justify-evenly p-3">
-				{!isSigninEnabled && <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />}
-				<input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-				<input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
-				<button type="submit">{isSigninEnabled ? 'Signin' : 'Signup'}</button>
+			<form onSubmit={(e) => handleAuthSubmission(e)} className="p-4 flex flex-col justify-between">
+				<div className="flex flex-col gap-5 h-40 justify-evenly">
+					{!isSigninEnabled && (
+						<Input
+							type="text"
+							placeholder="Name"
+							value={name}
+							onChange={(e) => setName(e.target.value as string)}
+							className="color5 focus:outline-0 customInput p-1 "
+						/>
+					)}
+					<Input
+						type="email"
+						placeholder="Email"
+						value={email}
+						onChange={(e) => setEmail(e.target.value as string)}
+						className="color5 focus:outline-0 customInput p-1"
+					/>
+					<Input
+						type="password"
+						placeholder="Password"
+						value={password}
+						onChange={(e) => setPassword(e.target.value as string)}
+						className="color5 focus:outline-0 customInput p-1"
+					/>
+				</div>
+				<div className="h-12 flex justify-center items-center">
+					<Button type="submit">{isSigninEnabled ? 'Signin' : 'Signup'}</Button>
+				</div>
 			</form>
 		</div>
 	);

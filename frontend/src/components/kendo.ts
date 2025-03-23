@@ -4,9 +4,14 @@
 */
 
 import { Button } from '@progress/kendo-react-buttons';
-import { Slide } from '@progress/kendo-react-animation';
-import { arrowUpIcon, arrowDownIcon, crosstabIcon, editToolsIcon, trashIcon, eyeIcon, shareIcon, handIcon } from '@progress/kendo-svg-icons'; // not used yet
+import { Input } from '@progress/kendo-react-inputs';
 import { SvgIcon } from '@progress/kendo-react-common';
+import { Tooltip } from '@progress/kendo-react-tooltip';
+import { fileReportIcon, pencilIcon, shareIcon, trashIcon, eyeIcon, logoutIcon } from '@progress/kendo-svg-icons';
+import { Avatar, AppBar, AppBarSection } from '@progress/kendo-react-layout';
+
+import { arrowUpIcon, arrowDownIcon, crosstabIcon } from '@progress/kendo-svg-icons'; // not used yet
+import { Slide } from '@progress/kendo-react-animation';
 
 // Animation
 export { Slide };
@@ -17,5 +22,15 @@ export { Button };
 // Common
 export { SvgIcon };
 
+// Input
+export { Input };
+
+// Tooltip
+export { Tooltip };
+
+// Layout
+export { Avatar, AppBar, AppBarSection };
+
 // Svg Icons
-export { arrowUpIcon, arrowDownIcon, crosstabIcon, editToolsIcon, trashIcon, eyeIcon, shareIcon, handIcon };
+export { fileReportIcon, eyeIcon, pencilIcon, shareIcon, trashIcon, logoutIcon };
+export { arrowUpIcon, arrowDownIcon, crosstabIcon };

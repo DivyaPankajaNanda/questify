@@ -73,3 +73,66 @@ body {
 	scrollbar-width: thin;
 	scrollbar-color: #6b6c6d #d7d8e0 !important;
 }
+
+.customInput:focus {
+	border-bottom: 0.05rem solid var(--questify-color5);
+}
+
+.customInput::placeholder {
+	color: var(--questify-color5);
+	opacity: 0.8;
+}
+
+.questionnaireCard {
+	/* border-color: var(--questify-color5); */
+	border-color: transparent;
+	box-shadow: 0 0.25rem 0.375rem rgba(0, 0, 0, 0.1);
+}
+
+.questionnaireCard:hover {
+	/* border-color: var(--questify-color4); */
+	box-shadow: 0 0.5rem 0.75rem rgba(0, 0, 0, 0.2);
+}
+
+/* kendo Tooltip */
+.k-tooltip {
+	background-color: rgba(20, 20, 20, 0.95); /* Dark semi-transparent */
+	color: #ffffff; /* White text */
+	border-radius: 0.375rem; /* 6px */
+	padding: 0.5rem 0.75rem; /* 8px 12px */
+	font-size: 0.875rem; /* 14px */
+	font-weight: 500; /* Slightly bold */
+	white-space: nowrap; /* Prevent wrapping */
+	box-shadow: 0px 0.25rem 0.75rem rgba(0, 0, 0, 0.2); /* Subtle shadow */
+	backdrop-filter: blur(0.3125rem); /* 5px */
+	transition:
+		opacity 0.5s ease-in-out,
+		transform 0.5s ease-in-out;
+}
+
+/* 🟡 Tooltip Arrow Styling */
+.k-tooltip::after {
+	content: '';
+	position: absolute;
+	border-style: solid;
+	border-width: 0.375rem; /* 6px */
+	border-color: rgba(20, 20, 20, 0.95) transparent transparent transparent; /* Arrow pointing down */
+	bottom: -0.75rem; /* -12px */
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+/* ✨ Tooltip Animation - Fade & Scale */
+.k-tooltip-enter {
+	opacity: 0;
+	transform: scale(0.95);
+}
+
+.k-tooltip-enter-active {
+	opacity: 1;
+	transform: scale(1);
+}
+
+/* Kendo ThemeBuilder customized styles */
+@import './kendo-custom-styles//questify-button.css';
+/* @import './kendo-custom-styles//questify-input.css'; */
