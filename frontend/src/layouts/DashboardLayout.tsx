@@ -12,11 +12,11 @@ const DashboardLayout = () => {
 	const navigate = useNavigate();
 	const { isAuthenticated } = useAuthStore();
 
-	useEffect(() => {
-		if (!isAuthenticated) {
-			navigate('/');
-		}
-	}, [isAuthenticated, navigate]);
+	// useEffect(() => {
+	// 	if (!isAuthenticated) {
+	// 		navigate('/');
+	// 	}
+	// }, [isAuthenticated, navigate]);
 
 	// return isAuthenticated ? (
 	return (
