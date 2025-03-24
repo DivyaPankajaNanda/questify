@@ -16,8 +16,17 @@ git clone <repository_link>
 cd questify/
 ```
 
+**_.env file setup for backend_**
+
+```
+cd backend
+cp .env.sample .env
+<!-- modify .env file accordingly -->
+cd ..
+```
+
 **_Docker compose command_**
 
 ```
-docker compose -f docker-compose.dev.yaml up --build
+docker compose -f docker-compose.dev.yaml --env-file ./backend/.env up --build
 ```

@@ -5,9 +5,16 @@
 
 import { useNavigate } from 'react-router';
 import { Avatar, AppBar, AppBarSection, SvgIcon, logoutIcon } from '../components/kendo';
+import { useAuthStore } from '../store/useAuthStore';
 
 const Navbar = () => {
 	const navigate = useNavigate();
+	const { user } = useAuthStore();
+
+	const userInitials = user?.name
+		.split(' ')
+		.map((item) => item.charAt(0).toUpperCase())
+		.join('');
 
 	const handleLogout = () => {
 		localStorage.removeItem('auth');
@@ -31,7 +38,7 @@ const Navbar = () => {
 			<AppBarSection className="flex w-3/12 gap-4 justify-end items-center">
 				<AppBarSection>
 					<Avatar type="text" className="bg-color4 text-white h-10 w-10 flex items-center justify-center font-bold">
-						<span>JS</span>
+						<span>{userInitials}</span>
 					</Avatar>
 				</AppBarSection>
 				<AppBarSection>

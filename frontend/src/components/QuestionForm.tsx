@@ -4,8 +4,9 @@
 */
 
 import { useState } from 'react';
+import { Question } from '../interface';
 
-const QuestionForm = ({ question }) => {
+const QuestionForm = ({ question }: { question: Question }) => {
 	const [isHidden, setIsHidden] = useState(true);
 	const [options, setOptions] = useState<string[]>([]);
 
@@ -21,9 +22,9 @@ const QuestionForm = ({ question }) => {
 	};
 
 	return (
-		<div className="bg-white rounded-lg border-4 border-solid border-black">
+		<div className="bg-white rounded border-4 border-solid" style={{ borderColor: 'var(--questify-color4)' }}>
 			<div
-				className="p-4 flex flex-row justify-between gap-2 bg-blue-300 cursor-pointer"
+				className="p-4 flex flex-row justify-between gap-2 bg-color4 text-white cursor-pointer"
 				onClick={() => {
 					setIsHidden((status) => !status);
 				}}
@@ -32,12 +33,12 @@ const QuestionForm = ({ question }) => {
 				<div>{isHidden ? 'down' : 'up'}</div>
 			</div>
 			<div className={`p-2 transition ease-in ${isHidden ? 'hidden' : 'block'}`}>
-				<div>Question Text :</div>
+				<div>Text :</div>
 				<div>
 					<input type="text" name="question" id="question" />
 				</div>
 				<div>Options :</div>
-				<div className={`p-4 flex flex-col gap-2 bg-green-500`}>
+				<div className={`p-4 flex flex-col gap-2 bg-color3`}>
 					{options.map((option, index) => (
 						<div key={index} className="flex justify-between">
 							<input type="text" name="option" id="option" value={option} />

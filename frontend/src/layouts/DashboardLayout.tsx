@@ -5,18 +5,20 @@
 
 import { Outlet, useNavigate } from 'react-router';
 import { Navbar } from '../components';
+import { useAuthStore } from '../store/useAuthStore';
 import { useEffect } from 'react';
 
 const DashboardLayout = () => {
 	const navigate = useNavigate();
+	const { isAuthenticated } = useAuthStore();
 
 	useEffect(() => {
-		const isAuthenticated = localStorage.getItem('auth');
 		if (!isAuthenticated) {
 			navigate('/');
 		}
-	}, [navigate]);
+	}, [isAuthenticated, navigate]);
 
+	// return isAuthenticated ? (
 	return (
 		<div>
 			<Navbar />

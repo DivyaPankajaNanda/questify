@@ -35,7 +35,7 @@ const Home = () => {
 				<div className="color4 absolute top-[40%] right-0 text-4xl text-right">
 					<div>Ques</div>
 					<div>
-						<span>Beg</span>
+						<span>G</span>
 					</div>
 				</div>
 			</motion.div>
@@ -58,7 +58,7 @@ const Home = () => {
 				<AnimatingCircle size={20} bg={'bg-white'} opacity={100} corner={'left'} />
 				<div className="color4 absolute top-[40%] left-0 text-4xl text-left">
 					<div>tify</div>
-					<div>in (hand - pointer)</div>
+					<div>O</div>
 				</div>
 			</motion.div>
 		</div>

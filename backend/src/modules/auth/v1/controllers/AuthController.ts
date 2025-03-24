@@ -40,6 +40,13 @@ export class AuthController {
 		response.status(HTTP_STATUS.NO_CONTENT.statusCode).send(new ApiResponse(HTTP_STATUS.NO_CONTENT.statusCode, HTTP_STATUS.NO_CONTENT.message));
 	};
 
+	public me = async (request: Request, response: Response) => {
+		const authenticatedUser = request.user;
+		response
+			.status(HTTP_STATUS.SUCCESS.statusCode)
+			.send(new ApiResponse(HTTP_STATUS.SUCCESS.statusCode, HTTP_STATUS.SUCCESS.message, { user: authenticatedUser }));
+	};
+
 	public refreshToken = async (request: Request, response: Response) => {
 		const providedRefreshToken = request.cookies.refreshToken;
 
@@ -62,6 +69,23 @@ export class AuthController {
 			maxAge: 7 * 24 * 60 * 60 * 1000, // 7d
 		});
 
+		return response;
+	};
+
+	public setAccessTokenCookie = (response: Response, accessToken: string): Response => {
+		response.cookie('accessToken', accessToken, {
+			httpOnly: true,
+			secure: config.PRODUCTION_ENVIRONMENT ? true : false,
+			sameSite: config.PRODUCTION_ENVIRONMENT ? 'strict' : 'none',
+			maxAge: 60 * 60 * 1000, // 1h
+		});
+
+		return response;
+	};
+
+	public setTokens = (response: Response, accessToken: string, refreshToken: string) => {
+		response = this.setAccessTokenCookie(response, accessToken);
+		response = this.setRefreshTokenCookie(response, refreshToken);
 		return response;
 	};
 }

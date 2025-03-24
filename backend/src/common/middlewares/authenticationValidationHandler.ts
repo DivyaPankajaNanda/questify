@@ -24,6 +24,8 @@ export const authenticationValidationHandler = () => {
 
 			const accessToken = request.headers.authorization?.split(' ')[1] as string;
 
+			// const accessToken = request.cookies?.accessToken;
+			// console.log('TOKEN:   ', accessToken);
 			const payload = await JWTUtil.extractAccessTokenPayload(accessToken);
 
 			request.user = payload as { userId: string; name?: string };

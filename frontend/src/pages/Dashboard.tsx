@@ -6,36 +6,33 @@
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { QuestionnaireCard } from '../components';
+import * as QuestionnaireAPI from '../api/questionnaireApi';
+import { Questionnaire } from '../interface';
+import { dummy_questionnaires } from '../api/dummy-content';
+// import { useQuestionnairesStore } from '../store/useQuestionnairesStore';
 
 const Dashboard = () => {
+	const [questionnaires, setQuestionnaires] = useState<Questionnaire[]>(dummy_questionnaires);
+	// const { questionnaires, listUserQuestionnaires } = useQuestionnairesStore();
 	const navigate = useNavigate();
-
-	const questionnairesSetup = [
-		{ questionnaireId: '1', title: 'Questionnaire 1', description: 'This is a description for questionnaire 1', isPublished: true },
-		{ questionnaireId: '2', title: 'Questionnaire 2', description: 'This is a description for questionnaire 2', isPublished: false },
-	];
-
-	const [questionnaires, setQuestionnaires] = useState([...questionnairesSetup]);
-
-	const addQuestionnaire = () => {
-		console.log('Adding new questionnaire');
-		const length = questionnaires.length;
-		const newQuestionnaire = {
-			questionnaireId: `${length + 1}`,
-			title: 'New Questionnaire',
-			description: 'This is a description for the new questionnaire',
-			isPublished: false,
-		};
-		setQuestionnaires((questionnaires) => [...questionnaires, newQuestionnaire]);
-	};
 
 	const isMounted = useRef(false);
 	useEffect(() => {
 		if (isMounted.current) return;
 		isMounted.current = true;
 
-		addQuestionnaire();
-	});
+		const fetchQuestionnaires = async () => {
+			try {
+				const questionnaireList = await QuestionnaireAPI.listUserQuestionnaires();
+				setQuestionnaires(questionnaireList);
+			} catch (error) {
+				console.error('Failed to fetch questionnaires:', error);
+			}
+		};
+
+		// fetchQuestionnaires();
+		// listUserQuestionnaires();
+	}, []);
 
 	return (
 		<div className="min-h-screen p-12 bg-color1">
@@ -45,7 +42,7 @@ const Dashboard = () => {
 					<QuestionnaireCard key={questionnaire.questionnaireId} questionnaire={questionnaire} />
 				))}
 				<button
-					className="w-75 h-75 font-bold rounded flex items-center justify-center bg-color4 text-white px-5 py-2 cursor-pointer transition-colors duration-300 ease-in-out hover:bg-color5"
+					className="w-75 h-75 font-bold rounded flex items-center justify-center bg-color4 text-white px-5 py-2 cursor-pointer"
 					onClick={() => {
 						navigate(`/dashboard/questionnaire/create`);
 					}}

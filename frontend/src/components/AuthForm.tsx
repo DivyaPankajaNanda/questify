@@ -5,8 +5,9 @@
 
 import { FormEvent, useState } from 'react';
 import { useNavigate } from 'react-router';
-import { signin, signup } from '../api/authApi';
+// import { signin, signup } from '../api/authApi';
 import { Button, Input } from '../components/kendo';
+import { useAuthStore } from '../store/useAuthStore';
 
 const AuthForm = () => {
 	const [email, setEmail] = useState('');
@@ -14,6 +15,7 @@ const AuthForm = () => {
 	const [name, setName] = useState('');
 	const [isSigninEnabled, setIsSigninEnabled] = useState(true);
 	const navigate = useNavigate();
+	const { signin, signup } = useAuthStore();
 
 	const handleAuthSubmission = async (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
@@ -23,8 +25,6 @@ const AuthForm = () => {
 			else await signup(name, email, password);
 
 			resetInputs();
-
-			localStorage.setItem('auth', 'user');
 			navigate(`/dashboard`);
 		} catch (error) {
 			console.log(error);

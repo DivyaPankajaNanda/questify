@@ -5,13 +5,8 @@
 
 import { SvgIcon, fileReportIcon, Tooltip, eyeIcon, pencilIcon, shareIcon, trashIcon } from '../components/kendo';
 import { useNavigate } from 'react-router';
-
-interface Questionnaire {
-	questionnaireId: string;
-	title: string;
-	description: string;
-	isPublished: boolean;
-}
+import { Questionnaire } from '../interface';
+import * as QuestionnaireAPI from '../api/questionnaireApi';
 
 const QuestionnaireCard = ({ questionnaire }: { questionnaire: Questionnaire }) => {
 	const navigate = useNavigate();
@@ -77,7 +72,14 @@ const QuestionnaireCard = ({ questionnaire }: { questionnaire: Questionnaire }) 
 				{/* Delete */}
 				<Tooltip anchorElement="target" position="top" parentTitle={true}>
 					<span className="inline-block" title="Delete">
-						<SvgIcon className="cursor-pointer" icon={trashIcon} size="xlarge" />
+						<SvgIcon
+							className="cursor-pointer"
+							icon={trashIcon}
+							size="xlarge"
+							onClick={() => {
+								QuestionnaireAPI.deleteQuestionnaire(questionnaire.questionnaireId as string);
+							}}
+						/>
 					</span>
 				</Tooltip>
 			</div>

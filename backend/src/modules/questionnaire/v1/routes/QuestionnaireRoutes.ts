@@ -15,7 +15,8 @@ import { QuestionnaireRepository } from '../repositories/QuestionnaireRepository
 const questionnaireController = new QuestionnaireController(new QuestionnaireService(new QuestionnaireRepository()));
 
 const router = Router();
-router.get('/{questionnaireId}', authenticationValidationHandler, asyncHandler(questionnaireController.findUserQuestionnaire));
+router.get('/user/:questionnaireId', authenticationValidationHandler, asyncHandler(questionnaireController.findUserQuestionnaire));
+router.get('/:questionnaireId', asyncHandler(questionnaireController.findQuestionnaire));
 router.get('/', authenticationValidationHandler, asyncHandler(questionnaireController.listUserQuestionnaires));
 router.post(
 	'/',
@@ -29,6 +30,6 @@ router.patch(
 	authenticationValidationHandler,
 	asyncHandler(questionnaireController.update),
 );
-router.delete('/{questionnaireId}', authenticationValidationHandler, asyncHandler(questionnaireController.delete));
+router.delete('/:questionnaireId', authenticationValidationHandler, asyncHandler(questionnaireController.delete));
 
 export default router;

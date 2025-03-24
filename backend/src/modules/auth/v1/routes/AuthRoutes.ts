@@ -18,6 +18,7 @@ const router = Router();
 router.post('/signup', requestValidationHandler({ bodySchema: SignupRequestSchema }), asyncHandler(authController.signup));
 router.post('/signin', requestValidationHandler({ bodySchema: SigninRequestSchema }), asyncHandler(authController.signin));
 router.post('/signout', authenticationValidationHandler(), asyncHandler(authController.signout));
+router.get('/me', authenticationValidationHandler(), asyncHandler(authController.me));
 router.post('/refresh-token', asyncHandler(authController.refreshToken));
 
 export default router;

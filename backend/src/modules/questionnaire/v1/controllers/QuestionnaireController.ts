@@ -37,6 +37,16 @@ export class QuestionnaireController {
 			.send(new ApiResponse(HTTP_STATUS.OK.statusCode, HTTP_STATUS.OK.message, { questionnaire: questionnaire }));
 	};
 
+	findQuestionnaire = async (request: Request, response: Response) => {
+		const questionnaireId = request.params.questionnaireId;
+
+		const questionnaire = await this.questionnaireService.findById(questionnaireId);
+
+		response
+			.status(HTTP_STATUS.OK.statusCode)
+			.send(new ApiResponse(HTTP_STATUS.OK.statusCode, HTTP_STATUS.OK.message, { questionnaire: questionnaire }));
+	};
+
 	listUserQuestionnaires = async (request: Request, response: Response) => {
 		const userId = request.user?.userId;
 

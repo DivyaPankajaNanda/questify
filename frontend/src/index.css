@@ -76,6 +76,11 @@ body {
 
 .customInput:focus {
 	border-bottom: 0.05rem solid var(--questify-color5);
+	outline: none;
+}
+
+.customInput.border-b-lg:focus {
+	border-bottom: 0.2rem solid var(--questify-color5);
 }
 
 .customInput::placeholder {
